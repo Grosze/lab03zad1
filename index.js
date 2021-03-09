@@ -10,7 +10,7 @@ app.post('/', async (req, res) => {
     const data = req.body.input;
 
     if (data === undefined) {
-        res.send({res: 1});
+        res.status(201).send({res: 1});
 
     };
 
@@ -26,19 +26,19 @@ app.put('/', async (req, res) => {
 
     };
 
-    res.send({res: 1});
+    res.status(201).send({res: 1});
 
 });
 
 app.delete('/', async (req, res) => {
-    const data = req.body.input;
+    const data = parseInt(req.body.input);
 
     if (data === 6) {
         res.send({res: 0});
 
     };
 
-    res.send({res: 1});
+    res.status(201).send({res: 1});
     
 });
  

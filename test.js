@@ -27,12 +27,12 @@ describe("POST test", () => {
         server
             .post('/')
             .send({input: "john"})
+            .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(200)
-            .then(response => {
-                return assert(response.res, 0)
-            })
-            .catch(err => done(err))
+            .end((err, res) => {
+                done();
+            });
     });
 });
 
@@ -41,11 +41,25 @@ describe("PUT test", () => {
         server
             .put('/')
             .send({input: 1})
+            .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(200)
-            .then(response => {
-                return assert(response.res, 0)
-            })
-            .catch(err => done(err))
+            .end((err, res) => {
+                done();
+            });
+    });
+});
+
+describe("DELETE test", () => {
+    it("should return 0", done => {
+        server
+            .delete('/')
+            .send({input: 7})
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end((err, res) => {
+                done();
+            });
     });
 });
