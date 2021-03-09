@@ -36,7 +36,3 @@ describe("POST test", () => {
             .catch(err => done(err))
     });
 });
-
-describe("PUT test", () => {
-    it("should return 0", done => )
-});
