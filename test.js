@@ -27,7 +27,20 @@ describe("POST test", () => {
         server
             .post('/')
             .send({input: "john"})
-            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(response => {
+                return assert(response.res, 0)
+            })
+            .catch(err => done(err))
+    });
+});
+
+describe("PUT test", () => {
+    it("should return 0", done => {
+        server
+            .put('/')
+            .send({input: 1})
             .expect('Content-Type', /json/)
             .expect(200)
             .then(response => {
