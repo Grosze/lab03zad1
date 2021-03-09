@@ -2,6 +2,14 @@ const supertest = require("supertest");
 
 const server = supertest.agent("http://localhost:8080");
 
+const assert = (a, b) => {
+    if (a === b) {
+        return true;
+    }; 
+
+    return false;
+};
+
 describe("GET test", () => {
     it("should return hello", done => {
         server
@@ -23,8 +31,12 @@ describe("POST test", () => {
             .expect('Content-Type', /json/)
             .expect(200)
             .then(response => {
-                assert(response.res, 0)
+                return assert(response.res, 0)
             })
             .catch(err => done(err))
     });
+});
+
+describe("PUT test", () => {
+    it("should return 0", done => )
 });
